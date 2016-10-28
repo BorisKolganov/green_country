@@ -75,6 +75,7 @@ class CallBack(models.Model):
     checked = models.BooleanField(default=False, verbose_name=u'Перезвонили?')
     updated = models.DateTimeField(auto_now=True, verbose_name='Обновлено в')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Создано в')
+    from_page = models.CharField(max_length=64, verbose_name=u'С какой страницы отправили форму')
 
     def __unicode__(self):
         return '{} {}'.format(self.name, self.phone)

@@ -1,5 +1,5 @@
 # coding=utf-8
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.http import JsonResponse
@@ -38,7 +38,9 @@ class CallBackView(FormView):
 class PageView(TemplateView):
     template_name = 'custom_page.html'
 
-    def get_context_data(self, string, **kwargs):
-        print string
-        print self.request
-        return {}
+    def get_context_data(self, slug, **kwargs):
+        page = get_object_or_404(Page, slug=slug)
+        context = {
+            'page_name': page.slug
+        }
+        return context
