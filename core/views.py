@@ -31,7 +31,7 @@ class CallBackView(FormView):
         errors = {k: v[0] for k, v in form.errors.items()}
         return JsonResponse({
             "status": 'not ok',
-            "message": errors,
+            "errors": errors,
         })
 
 

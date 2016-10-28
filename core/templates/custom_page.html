@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    <br/>
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-sm-6">
@@ -9,20 +9,27 @@
                 <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
                 <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
             </div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6 well">
                 <br/>
-                <form action="{% url 'core:callback' %}" method="post">
+                <form action="{% url 'core:callback' %}" method="post" class="callback-form">
                 {% csrf_token %}
-                  <div class="form-group">
+                  <div class="form-group name">
                     <label for="name">Ваше имя</label>
                     <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
+                    <span id="helpBlock" class="help-block name-error" style="display: none;"></span>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group phone">
                     <label for="phone">Ваш телефон</label>
                     <input name="phone" type="text" class="form-control" id="phone" placeholder="Телефон">
+                    <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>
                   </div>
                   <button type="submit" class="btn btn-default">Отправить</button>
                 </form>
+                <div class="form-message" style="display: none">
+                    <div class="clearfix"></div>
+                    <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>
+                </div>
+
             </div>
         </div>
     </div>

@@ -39,7 +39,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background: url(../img/banner.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -103,7 +103,7 @@ h6 {
 
 .content-section-b {
     padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
+    /*border-top: 1px solid #e7e7e7;*/
     border-bottom: 1px solid #e7e7e7;
 }
 
