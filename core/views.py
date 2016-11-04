@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView, FormView
 
 from core.forms import CallBackForm
-from core.models import Page
+from core.models import  MainRaw, Advantage, Clients, RawDetails
 
 
 class IndexView(TemplateView):
@@ -14,7 +14,9 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = {
-            'pages': Page.objects.all()
+            'raw': MainRaw.objects.all(),
+            'advantage': Advantage.objects.all(),
+            'clients': Clients.objects.all()
         }
         return context
 
@@ -35,12 +37,15 @@ class CallBackView(FormView):
         })
 
 
-class PageView(TemplateView):
-    template_name = 'custom_page.html'
+class RawView(TemplateView):
+    template_name = 'raw_page.html'
 
-    def get_context_data(self, slug, **kwargs):
-        page = get_object_or_404(Page, slug=slug)
-        context = {
-            'page_name': page.slug
-        }
-        return context
+    def get_context_data(self, pk, **kwargs):
+        raw_details = RawDetails.objects.filter(main_raw__id=pk)
+        print raw_details
+        return {}
+        # page = get_object_or_404(Page, slug=slug)
+        # context = {
+        #     'page_name': page.slug
+        # }
+        # return context

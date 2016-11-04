@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 
-from core.models import User, CallBack, Page
+from core.models import User, CallBack, RawDetails, MainRaw, Clients, Advantage
 
 
 @admin.register(User)
@@ -38,4 +38,7 @@ class CallBackAdmin(admin.ModelAdmin):
     list_filter = ('checked', 'from_page')
     list_editable = ('checked',)
 
-admin.site.register(Page)
+admin.site.register(RawDetails)
+admin.site.register(MainRaw)
+admin.site.register(Clients)
+admin.site.register(Advantage)

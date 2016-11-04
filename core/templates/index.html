@@ -1,64 +1,109 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="intro-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <h1>ООО Зеленая Страна</h1>
-                        <h3>Мы делаем нашу планету чистой</h3>
-                        <h3>Пункт приема вторсырья</h3>
-                        <hr class="intro-divider" />
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="container" style="text-align: center;">
-        <div class="row">
-            <div class="col-lg-12">
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12">#}
 {#                    <div class="intro-message">#}
-                    <hr class="intro-divider" />
-                    <h1>Виды сырья, которые мы принимаем</h1>
-                    <hr class="intro-divider" />
+{#                        <h1>ООО Зеленая Страна</h1>#}
+{#                        <h3>Мы делаем нашу планету чистой</h3>#}
+{#                        <h3>Пункт приема вторсырья</h3>#}
+{#                        <hr class="intro-divider" />#}
 {#                    </div>#}
-            </div>
-        </div>
+{#                </div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
     </div>
+{#    <div class="content-section-b">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-5 col-sm-6">#}
+{#                    <hr class="section-heading-spacer">#}
+{#                    <div class="clearfix"></div>#}
+{#                    <h2 class="section-heading">Узнайте цену</h2>#}
+{#                    <p class="lead">Оставьте свой телефон и мы перезвоним</p>#}
+{#                </div>#}
+{#                <div class="col-lg-5 col-lg-offset-2 col-sm-6">#}
+{#                    <form action="{% url 'core:callback' %}" method="post" class="callback-form">#}
+{#                    {% csrf_token %}#}
+{#                      <div class="form-group name">#}
+{#                        <label for="name">Ваше имя</label>#}
+{#                        <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">#}
+{#                        <span id="helpBlock" class="help-block name-error" style="display: none;"></span>#}
+{#                      </div>#}
+{#                      <div class="form-group phone">#}
+{#                        <label for="phone">Ваш телефон</label>#}
+{#                        <input name="phone" type="text" class="form-control" id="phone" placeholder="Телефон">#}
+{#                        <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>#}
+{#                      </div>#}
+{#                      <button type="submit" class="btn btn-default">Отправить</button>#}
+{#                      <input name="from_page" value="{{ page_name }}" style="display: none;">#}
+{#                    </form>#}
+{##}
+{#                    <div class="form-message" style="display: none">#}
+{#                        <div class="clearfix"></div>#}
+{#                        <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="container-section-b">#}
+{#        <div class="container" style="text-align: center;">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12">#}
+    {#                    <div class="intro-message">#}
+{#                        <hr class="intro-divider" />#}
+{#                        <h1>Виды сырья, которые мы принимаем</h1>#}
+{#                        <hr class="intro-divider" />#}
+    {#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
     <div class="content-section-b">
+        <a name="raw" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                    <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                <div class="col-lg-12" style="text-align: center">
+                    <hr class="intro-divider" />
+                    <h2>Виды сырья, которые мы принимаем</h2>
+                    <hr class="intro-divider" />
                 </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/ipad.png" alt="">
-                </div>
+
+                {% for r in raw %}
+                    <div class="col-sm-3 col-lg-2 col-md-3">
+                        <div class="thumbnail">
+                            <img src="{{ r.image.url }}" alt="{{ r.text }}">
+                            <div class="caption">
+                                <h4>{{ r.text }}</h4>
+                                <p><a href="{% url 'core:raw' r.id %}" class="btn btn-primary" role="button">Подробнее</a></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
     <!-- /.content-section-a -->
 
     <div class="content-section-a">
-
-        <div class="container">
-
+        <div class="container" >
+        <a name="advantage" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                    <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                <div class="col-lg-12" style="text-align: center">
+                    <hr class="intro-divider" />
+                    <h2>Наши приемущества</h2>
+                    <hr class="intro-divider" />
                 </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="img/dog.png" alt="">
-                </div>
+                {% for a in advantage %}
+                    <div class="col-lg-2 col-sm-3" style="text-align: center">
+                        <img class="img-rounded img-responsive" src="{{ a.image.url }}" alt="{{ a.text }}">
+                        <h5>{{ a.text }}</h5>
+                    </div>
+                {% endfor %}
             </div>
-
         </div>
         <!-- /.container -->
 
@@ -68,21 +113,56 @@
     <div class="content-section-b">
 
         <div class="container">
-
+            <a name="about" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                    <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                <div class="col-lg-12" style="text-align: center">
+                    <hr class="intro-divider" />
+                    <h2>О нас</h2>
+                    <hr class="intro-divider" />
                 </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/phones.png" alt="">
+                <h3>Бла - бла - бла</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section-a">
+        <div class="container">
+        <a name="clients" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
+            <div class="row">
+                <div class="col-lg-12" style="text-align: center">
+                    <hr class="intro-divider" />
+                    <h2>Наши клиенты</h2>
+                    <hr class="intro-divider" />
+                </div>
+                <div class="col-lg-12">
+                    <div class="clients">
+                        {% for c in clients %}
+                            <div class="col-lg-2 col-md-3">
+                                <img class="img-rounded img-responsive" src="{{ c.image.url }}" alt="{{ c.text }}" >
+                                <h5>{{ c.text }}</h5>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-
         </div>
-        <!-- /.container -->
+    </div>
 
+     <div class="content-section-b">
+        <div class="container">
+            <a name="contacts" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
+            <div class="row">
+               <div class="col-lg-12" style="text-align: center">
+                    <hr class="intro-divider" />
+                    <h2>Контакты</h2>
+                    <hr class="intro-divider" />
+                </div>
+                <div class="col-lg-12">
+                    <div id="map" style="width: 100%; height: 400px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

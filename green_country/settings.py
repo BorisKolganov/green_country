@@ -119,6 +119,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 EMAIL_HOST = '127.0.0.1'
 EMAIL_PORT = 1025
 SENDER_EMAIL = 'callback@greencountry.ru'

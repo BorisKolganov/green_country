@@ -81,17 +81,58 @@ class CallBack(models.Model):
         return '{} {}'.format(self.name, self.phone)
 
 
-class Page(models.Model):
-    class Meta:
-        verbose_name = u'Страница'
-        verbose_name_plural = u'Страницы'
 
-    text = models.TextField(max_length=1000, verbose_name=u'Текст на странице')
-    slug = models.CharField(max_length=20, unique=True, verbose_name=u'Строка в URL')
-    name = models.CharField(max_length=64, verbose_name=u'Название в строке меню')
+
+class RawDetails(models.Model):
+    class Meta:
+        verbose_name = u'Детали сырья'
+        verbose_name_plural = u'Детали сырья'
+
+    image = models.ImageField(upload_to='raw', verbose_name=u'Фото сырья')
+    name = models.CharField(max_length=100, verbose_name=u'Название сырья')
+    description = models.CharField(max_length=250, verbose_name=u'Описание сырья')
+    price = models.CharField(max_length=100, verbose_name=u'Стоимость сырья')
+
+    main_raw = models.ForeignKey('MainRaw', verbose_name=u'Сырье на главное')
 
     def __unicode__(self):
-        return self.name
+        return self.main_raw.text + ' ' + self.name
+
+
+class MainRaw(models.Model):
+    class Meta:
+        verbose_name = u'Сырье на главной странице'
+        verbose_name_plural = u'Сырье на главной странице'
+
+    image = models.ImageField(upload_to='raw/', verbose_name=u'Фото на главной')
+    text = models.CharField(max_length=100, verbose_name=u'Текст под фото')
+
+    def __unicode__(self):
+        return self.text
+
+
+class Clients(models.Model):
+    class Meta:
+        verbose_name = u'Клиент'
+        verbose_name_plural = u'Клиенты'
+
+    image = models.ImageField(upload_to='clients/', verbose_name=u'Фото клиентов')
+    text = models.CharField(max_length=100, verbose_name=u'Текст клиента')
+
+    def __unicode__(self):
+        return self.text
+
+
+class Advantage(models.Model):
+    class Meta:
+        verbose_name = u'Приемущество'
+        verbose_name_plural = u'Приемущества'
+
+    image = models.ImageField(upload_to='advantage/', verbose_name=u'Фото приемущества')
+    text = models.CharField(max_length=100, verbose_name=u'Текст приемущества')
+
+    def __unicode__(self):
+        return self.text
 
 
 @receiver(post_save, sender=CallBack)
@@ -101,7 +142,8 @@ def send_callback_email(sender, instance, **kwargs):
     body = u'Привет, {} заказал обратный звонок на телефон {}.\n' \
            u'Данное обращение было в {}'.format(instance.name,
                                                 instance.phone,
-                                                instance.created.astimezone(tz).strftime('%d.%m.%Y %H:%M'))
+                                                instance.created.astimezone(tz).strftime('%d.%m.%Y %H:%M'),
+                                                instance.from_page)
     sender_email = settings.SENDER_EMAIL
     to = settings.OPERATORS_EMAIL
     send_mail(subject, body, sender_email, to)

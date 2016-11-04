@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,14 +20,14 @@
 
     <!-- Custom Fonts -->
     <link href="{% static 'core/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/slick.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/slick-theme.css' %}" rel="stylesheet" type="text/css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=eu_RU" type="text/javascript"></script>
+    <script src="{% static 'core/js/jquery.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'core/js/jquerycookie.js' %}"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -46,11 +46,21 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    {% for page in pages %}
-                        <li>
-                            <a href="{% url 'core:page' page.slug %}">{{ page.name }}</a>
-                        </li>
-                    {% endfor %}
+                    <li>
+                        <a href="{% url 'core:index' %}#raw" >Сырье</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#advantage">Приемущества</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#about">О нас</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#clients">Клиенты</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#contacts">Контакты</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -87,10 +97,9 @@
         </div>
     </footer>
     {% endblock %}
-    <script src="{% static 'core/js/jquery.js' %}"></script>
-    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'core/js/jquerycookie.js' %}"></script>
     <script src="{% static 'core/js/sendform.js' %}"></script>
+    <script src="{% static 'core/js/slick.js' %}"></script>
+    <script src="{% static 'core/js/clients.js' %}"></script>
 
 </body>
 

@@ -7,5 +7,4 @@ from green_country import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('core.urls', namespace='core'))
-]
-# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
