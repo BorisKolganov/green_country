@@ -2,6 +2,8 @@
 
 from __future__ import unicode_literals
 
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.mail import send_mail
@@ -82,7 +84,6 @@ class CallBack(models.Model):
 
 
 
-
 class RawDetails(models.Model):
     class Meta:
         verbose_name = u'Детали сырья'
@@ -106,6 +107,7 @@ class MainRaw(models.Model):
 
     image = models.ImageField(upload_to='raw/', verbose_name=u'Фото на главной')
     text = models.CharField(max_length=100, verbose_name=u'Текст под фото')
+    # description = models.CharField(max_length=250, verbose_name=u'Описание')
 
     def __unicode__(self):
         return self.text
@@ -125,14 +127,33 @@ class Clients(models.Model):
 
 class Advantage(models.Model):
     class Meta:
-        verbose_name = u'Приемущество'
-        verbose_name_plural = u'Приемущества'
+        verbose_name = u'Преимущество'
+        verbose_name_plural = u'Преимущества'
 
     image = models.ImageField(upload_to='advantage/', verbose_name=u'Фото приемущества')
     text = models.CharField(max_length=100, verbose_name=u'Текст приемущества')
 
     def __unicode__(self):
         return self.text
+
+
+class MainPage(models.Model):
+    class Meta:
+        verbose_name = u'Главная страница'
+        verbose_name_plural = u'Главные страницы'
+
+    header = models.CharField(max_length=250, verbose_name=u'Текст на картинке')
+    service_header = models.CharField(max_length=250, verbose_name=u'Заголовок услуг')
+    advantage_header = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ')
+    advantage_image = models.ImageField(upload_to='headers/', verbose_name=u'Картина преимуществ')
+    about_header = models.CharField(max_length=250, verbose_name=u'Заголовок о нас')
+    about_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст о нас')
+    clients_header = models.CharField(max_length=250, verbose_name=u'Загловок клиентов')
+    contacts_header = models.CharField(max_length=250, verbose_name=u'Заголовок контактов')
+    contacts_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст контактов')
+
+    def __unicode__(self):
+        return self.header
 
 
 @receiver(post_save, sender=CallBack)

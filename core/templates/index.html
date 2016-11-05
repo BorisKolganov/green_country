@@ -1,19 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="intro-header">
-{#        <div class="container">#}
-{#            <div class="row">#}
-{#                <div class="col-lg-12">#}
-{#                    <div class="intro-message">#}
-{#                        <h1>ООО Зеленая Страна</h1>#}
-{#                        <h3>Мы делаем нашу планету чистой</h3>#}
-{#                        <h3>Пункт приема вторсырья</h3>#}
-{#                        <hr class="intro-divider" />#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#        </div>#}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>{{ page.header }}</h1>
+                    </div>
+                </div>
+
+                <div class="col-lg-offset-9 col-lg-3 well" style="margin-top: 50px; color: black; background-color: rgba(245, 245, 245, 0.8)">
+                    <h3>УЗНАТЬ ЦЕНУ ЗА КГ</h3>
+                    <form action="{% url 'core:callback' %}" method="post" class="callback-form">
+                    {% csrf_token %}
+                          <div class="form-group name">
+                            <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
+                            <span id="helpBlock" class="help-block name-error" style="display: none;"></span>
+                          </div>
+                          <div class="form-group phone">
+                            <input name="phone" type="text" class="form-control" id="phone" placeholder="Ваш телефон">
+                            <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>
+                          </div>
+                        <div class="form-group from_page">
+                            <input name="from_page" value="{{ page_name }}" type="text" class="form-control" id="from_page" placeholder="Вид сырья">
+                            <span id="helpBlock" class="help-block from_page-error" style="display: none;"></span>
+                        </div>
+                        <button type="submit" class="btn btn-default">Отправить заявку</button>
+
+                    </form>
+
+                    <div class="form-message" style="display: none">
+                        <div class="clearfix"></div>
+                        <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {#    <div class="content-section-b">#}
 {#        <div class="container">#}
@@ -68,18 +90,16 @@
             <div class="row">
                 <div class="col-lg-12" style="text-align: center">
                     <hr class="intro-divider" />
-                    <h2>Виды сырья, которые мы принимаем</h2>
+                    <h2>{{ page.service_header }}</h2>
                     <hr class="intro-divider" />
                 </div>
-
                 {% for r in raw %}
                     <div class="col-sm-3 col-lg-2 col-md-3">
-                        <div class="thumbnail">
-                            <img src="{{ r.image.url }}" alt="{{ r.text }}">
-                            <div class="caption">
-                                <h4>{{ r.text }}</h4>
-                                <p><a href="{% url 'core:raw' r.id %}" class="btn btn-primary" role="button">Подробнее</a></p>
-                            </div>
+                        <a href="{% url 'core:raw' r.id %}">
+                            <img src="{{ r.image.url }}" alt="{{ r.text }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h4>{{ r.text }}</h4>
                         </div>
                     </div>
                 {% endfor %}
@@ -94,15 +114,12 @@
             <div class="row">
                 <div class="col-lg-12" style="text-align: center">
                     <hr class="intro-divider" />
-                    <h2>Наши приемущества</h2>
+                    <h2>{{ page.advantage_header }}</h2>
                     <hr class="intro-divider" />
                 </div>
-                {% for a in advantage %}
-                    <div class="col-lg-2 col-sm-3" style="text-align: center">
-                        <img class="img-rounded img-responsive" src="{{ a.image.url }}" alt="{{ a.text }}">
-                        <h5>{{ a.text }}</h5>
+                    <div class="col-lg-12">
+                        <img class="img-responsive" src="{{ page.advantage_image.url }}">
                     </div>
-                {% endfor %}
             </div>
         </div>
         <!-- /.container -->
@@ -117,10 +134,12 @@
             <div class="row">
                 <div class="col-lg-12" style="text-align: center">
                     <hr class="intro-divider" />
-                    <h2>О нас</h2>
+                    <h2>{{ page.about_header }}</h2>
                     <hr class="intro-divider" />
                 </div>
-                <h3>Бла - бла - бла</h3>
+                <div class="col-lg-12">
+                    {{ page.about_text|safe }}
+                </div>
             </div>
         </div>
     </div>
@@ -131,7 +150,7 @@
             <div class="row">
                 <div class="col-lg-12" style="text-align: center">
                     <hr class="intro-divider" />
-                    <h2>Наши клиенты</h2>
+                    <h2>{{ page.clients_header }}</h2>
                     <hr class="intro-divider" />
                 </div>
                 <div class="col-lg-12">
@@ -154,8 +173,11 @@
             <div class="row">
                <div class="col-lg-12" style="text-align: center">
                     <hr class="intro-divider" />
-                    <h2>Контакты</h2>
+                    <h2>{{ page.contacts_header }}</h2>
                     <hr class="intro-divider" />
+                </div>
+                <div class="col-lg-12">
+                    {{ page.contacts_text|safe }}
                 </div>
                 <div class="col-lg-12">
                     <div id="map" style="width: 100%; height: 400px;">

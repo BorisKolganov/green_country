@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView, FormView
 
 from core.forms import CallBackForm
-from core.models import  MainRaw, Advantage, Clients, RawDetails
+from core.models import  MainRaw, Advantage, Clients, RawDetails, MainPage
 
 
 class IndexView(TemplateView):
@@ -14,6 +14,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = {
+            'page': MainPage.objects.all().first(),
             'raw': MainRaw.objects.all(),
             'advantage': Advantage.objects.all(),
             'clients': Clients.objects.all()

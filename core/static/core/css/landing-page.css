@@ -39,15 +39,15 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/banner.png) no-repeat center center;
+    background: url(../img/banner.jpg) no-repeat center center;
     background-size: cover;
     height: 720px;
 }
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    /*padding-top: 20%;*/
+    /*padding-bottom: 20%;*/
 }
 
 .intro-message > h1 {

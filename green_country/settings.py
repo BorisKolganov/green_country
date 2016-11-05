@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 PROJECT_APPS = [
@@ -121,6 +123,29 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CKEDITOR_UPLOAD_PATH = 'ckeditor/'
+#
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'Custom',
+#         'toolbar_Custom': [
+#             ['Source'],
+#             ['Bold', 'Italic', 'Underline'],
+#             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
+#              'JustifyRight', 'JustifyBlock'],
+#             ['Link', 'Unlink', 'Image'],
+#             ['RemoveFormat']
+#         ],
+#         'height': 300,
+#         'width': 600,
+#         'language': 'ru',
+#         'allowedContent': True,
+#         'disableNativeSpellChecker': False
+#     },
+# }
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 EMAIL_HOST = '127.0.0.1'
 EMAIL_PORT = 1025

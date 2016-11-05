@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 
-from core.models import User, CallBack, RawDetails, MainRaw, Clients, Advantage
+from core.models import User, CallBack, RawDetails, MainRaw, Clients, Advantage, MainPage
 
 
 @admin.register(User)
@@ -42,3 +42,4 @@ admin.site.register(RawDetails)
 admin.site.register(MainRaw)
 admin.site.register(Clients)
 admin.site.register(Advantage)
+admin.site.register(MainPage)
