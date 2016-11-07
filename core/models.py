@@ -143,6 +143,7 @@ class MainPage(models.Model):
         verbose_name_plural = u'Главные страницы'
 
     header = models.CharField(max_length=250, verbose_name=u'Текст на картинке')
+    header_image = models.ImageField(upload_to='header/', verbose_name=u'Фоновая картинка заголовка')
     service_header = models.CharField(max_length=250, verbose_name=u'Заголовок услуг')
     advantage_header = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ')
     advantage_image = models.ImageField(upload_to='headers/', verbose_name=u'Картина преимуществ')

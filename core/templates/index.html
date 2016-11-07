@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="intro-header">
+    <div class="intro-header" style="background-image: url({{ page.header_image.url }})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -9,7 +9,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-offset-9 col-lg-3 well" style="margin-top: 50px; color: black; background-color: rgba(245, 245, 245, 0.8)">
+                <div class="col-lg-offset-9 col-lg-3 well" style="margin-top: 50px; color: black; background-color: rgba(245, 245, 245, 0.8); padding-top: 0px;">
                     <h3>УЗНАТЬ ЦЕНУ ЗА КГ</h3>
                     <form action="{% url 'core:callback' %}" method="post" class="callback-form">
                     {% csrf_token %}
@@ -94,7 +94,7 @@
                     <hr class="intro-divider" />
                 </div>
                 {% for r in raw %}
-                    <div class="col-sm-3 col-lg-2 col-md-3">
+                    <div class="col-lg-offset-1 col-sm-3 col-lg-2 col-md-3" style="text-align: center">
                         <a href="{% url 'core:raw' r.id %}">
                             <img src="{{ r.image.url }}" alt="{{ r.text }}" class="img-responsive">
                         </a>
@@ -105,11 +105,11 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
     <!-- /.content-section-a -->
+    </div>
 
     <div class="content-section-a">
-        <div class="container" >
+        <div class="container-fluid" >
         <a name="advantage" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
                 <div class="col-lg-12" style="text-align: center">
