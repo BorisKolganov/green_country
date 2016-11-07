@@ -33,31 +33,32 @@
 
 <body>
     {% block header %}
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" style="background-color: rgba(246,246,246,0.9)">
         <div class="container topnav" style="">
             <div class="navbar-header">
                 <a class="navbar-brand topnav" href="{% url 'core:index' %}">Зеленая Страна</a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="text-align: center ">
+                <ul class="nav navbar-nav" style="display: inline-block;float: none;vertical-align: top;">
+                    <li>
+                        <a href="{% url 'core:index' %}#raw" >{{ page.service_header }}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#advantage">{{ page.advantage_header }}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#about">{{ page.about_header }}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#clients">{{ page.clients_header }}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'core:index' %}#contacts">{{ page.contacts_header }}</a>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{% url 'core:index' %}#raw" >Сырье</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'core:index' %}#advantage">Приемущества</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'core:index' %}#about">О нас</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'core:index' %}#clients">Клиенты</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'core:index' %}#contacts">Контакты</a>
-                    </li>
-                    <li>
-                        <p class="navbar-text" style="color: black"> г. Москва ул. Илимская, д.3<br/>
-                        89774259175<br/>
+                        <p class="navbar-text" style="color: black">{{ page.phone }}<br/>
                         info@zelenaya-strana.ru</p>
                     </li>
                 </ul>
@@ -79,15 +80,15 @@
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="{% url 'core:index' %}#about">О нас</a>
+                            <a href="{% url 'core:index' %}#about">{{ page.about_header }}</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="{% url 'core:index' %}#raw">Услуги</a>
+                            <a href="{% url 'core:index' %}#raw">{{ page.service_header }}</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="{% url 'core:index' %}#contact">Контакты</a>
+                            <a href="{% url 'core:index' %}#contact">{{ page.contacts_header }}</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>

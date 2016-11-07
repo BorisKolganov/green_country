@@ -152,6 +152,7 @@ class MainPage(models.Model):
     clients_header = models.CharField(max_length=250, verbose_name=u'Загловок клиентов')
     contacts_header = models.CharField(max_length=250, verbose_name=u'Заголовок контактов')
     contacts_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст контактов')
+    phone = models.CharField(max_length=30, verbose_name=u'Телефон в хедере')
 
     def __unicode__(self):
         return self.header

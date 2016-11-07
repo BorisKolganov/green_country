@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="intro-header" style="background-image: url({{ page.header_image.url }})">
+        <br/><br/>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -93,12 +94,13 @@
                     <h2>{{ page.service_header }}</h2>
                     <hr class="intro-divider" />
                 </div>
+                <div class="col-lg-1"></div>
                 {% for r in raw %}
-                    <div class="col-lg-offset-1 col-sm-3 col-lg-2 col-md-3" style="text-align: center">
+                    <div class="col-sm-3 col-lg-2 col-md-3" style="text-align: center">
                         <a href="{% url 'core:raw' r.id %}">
                             <img src="{{ r.image.url }}" alt="{{ r.text }}" class="img-responsive">
                         </a>
-                        <div class="caption">
+                        <div class="caption" style="margin-top: 20px;">
                             <h4>{{ r.text }}</h4>
                         </div>
                     </div>
