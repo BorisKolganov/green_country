@@ -144,14 +144,25 @@ class MainPage(models.Model):
 
     header = models.CharField(max_length=250, verbose_name=u'Текст на картинке')
     header_image = models.ImageField(upload_to='header/', verbose_name=u'Фоновая картинка заголовка')
-    service_header = models.CharField(max_length=250, verbose_name=u'Заголовок услуг')
-    advantage_header = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ')
+
+    service_header = models.CharField(max_length=250, verbose_name=u'Заголовок услуг на странице')
+    service_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок услуг в хедере')
+
+    advantage_header = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ на страницк')
     advantage_image = models.ImageField(upload_to='headers/', verbose_name=u'Картина преимуществ')
-    about_header = models.CharField(max_length=250, verbose_name=u'Заголовок о нас')
+    advantage_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ в хедере')
+
+    about_header = models.CharField(max_length=250, verbose_name=u'Заголовок о нас на странице')
     about_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст о нас')
-    clients_header = models.CharField(max_length=250, verbose_name=u'Загловок клиентов')
-    contacts_header = models.CharField(max_length=250, verbose_name=u'Заголовок контактов')
+    about_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок о нас в хедере')
+
+    clients_header = models.CharField(max_length=250, verbose_name=u'Загловок клиентов на странице')
+    clients_header_link = models.CharField(max_length=250, verbose_name=u'Загловок клиентов в хедере')
+
+    contacts_header = models.CharField(max_length=250, verbose_name=u'Заголовок контактов на странице')
     contacts_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст контактов')
+    contacts_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок контактов в хедере')
+
     phone = models.CharField(max_length=30, verbose_name=u'Телефон в хедере')
 
     def __unicode__(self):
