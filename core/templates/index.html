@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="col-lg-offset-9 col-lg-3 well" style="margin-top: 50px; color: black; background-color: rgba(245, 245, 245, 0.8); padding-top: 0px;">
-                    <h3>УЗНАТЬ ЦЕНУ ЗА КГ</h3>
+                    <h3>Узнать цену за кг</h3>
                     <form action="{% url 'core:callback' %}" method="post" class="callback-form">
                     {% csrf_token %}
                           <div class="form-group name">
@@ -38,53 +38,6 @@
             </div>
         </div>
     </div>
-{#    <div class="content-section-b">#}
-{#        <div class="container">#}
-{#            <div class="row">#}
-{#                <div class="col-lg-5 col-sm-6">#}
-{#                    <hr class="section-heading-spacer">#}
-{#                    <div class="clearfix"></div>#}
-{#                    <h2 class="section-heading">Узнайте цену</h2>#}
-{#                    <p class="lead">Оставьте свой телефон и мы перезвоним</p>#}
-{#                </div>#}
-{#                <div class="col-lg-5 col-lg-offset-2 col-sm-6">#}
-{#                    <form action="{% url 'core:callback' %}" method="post" class="callback-form">#}
-{#                    {% csrf_token %}#}
-{#                      <div class="form-group name">#}
-{#                        <label for="name">Ваше имя</label>#}
-{#                        <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">#}
-{#                        <span id="helpBlock" class="help-block name-error" style="display: none;"></span>#}
-{#                      </div>#}
-{#                      <div class="form-group phone">#}
-{#                        <label for="phone">Ваш телефон</label>#}
-{#                        <input name="phone" type="text" class="form-control" id="phone" placeholder="Телефон">#}
-{#                        <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>#}
-{#                      </div>#}
-{#                      <button type="submit" class="btn btn-default">Отправить</button>#}
-{#                      <input name="from_page" value="{{ page_name }}" style="display: none;">#}
-{#                    </form>#}
-{##}
-{#                    <div class="form-message" style="display: none">#}
-{#                        <div class="clearfix"></div>#}
-{#                        <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#    <div class="container-section-b">#}
-{#        <div class="container" style="text-align: center;">#}
-{#            <div class="row">#}
-{#                <div class="col-lg-12">#}
-    {#                    <div class="intro-message">#}
-{#                        <hr class="intro-divider" />#}
-{#                        <h1>Виды сырья, которые мы принимаем</h1>#}
-{#                        <hr class="intro-divider" />#}
-    {#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
     <div class="content-section-b">
         <a name="raw" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
         <div class="container">
@@ -105,6 +58,9 @@
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+            <div class="row" style="text-align: center">
+                <a class="popup-with-form btn btn-success" href="#callback-form">Заказать вывоз прямо сейчас</a>
             </div>
         </div>
     <!-- /.content-section-a -->
@@ -189,4 +145,63 @@
             </div>
         </div>
     </div>
+
+     <div class="content-section-b">
+        <div class="container">
+            <a name="contacts" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
+            <div class="row">
+               <div class="col-lg-12" style="text-align: center">
+{#                    <hr class="intro-divider" />#}
+                    <h2>Остались вопросы? <br/>Мы вам перезвоним! <span class="icon icon-envelope"></span> </h2>
+{#                    <hr class="intro-divider" />#}
+                </div>
+                <div class="col-lg-offset-4 col-lg-4">
+            <form action="{% url 'core:callback' %}" class="white-popup-block well callback-form" style="margin-top: 50px; color: black; padding-top: 0px;">
+                <div style="text-align: center; margin-bottom: 20px;" >
+                    <h3>Заказать вывоз</h3>
+                </div>
+                {% csrf_token %}
+                  <div class="form-group name">
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
+                    <span id="helpBlock" class="help-block name-error" style="display: none;"></span>
+                  </div>
+                  <div class="form-group phone">
+                    <input name="phone" type="text" class="form-control" id="phone" placeholder="Ваш телефон">
+                    <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>
+                  </div>
+                <div style="text-align: center">
+                <button type="submit" class="btn btn-default">Отправить заявку</button>
+                </div>
+            </form>
+        </div>
+            </div>
+        </div>
+    </div>
+
+<!-- form itself -->
+<div class="container mfp-hide" id="callback-form" >
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4">
+            <form action="{% url 'core:callback' %}" class="white-popup-block well callback-form" style="margin-top: 50px; color: black; padding-top: 0px;">
+                <div style="text-align: center; margin-bottom: 20px;" >
+                    <h3>Заказать вывоз</h3>
+                </div>
+                {% csrf_token %}
+                  <div class="form-group name">
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
+                    <span id="helpBlock" class="help-block name-error" style="display: none;"></span>
+                  </div>
+                  <div class="form-group phone">
+                    <input name="phone" type="text" class="form-control" id="phone" placeholder="Ваш телефон">
+                    <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>
+                  </div>
+                <div class="form-group from_page">
+                    <input name="from_page" value="{{ page_name }}" type="text" class="form-control" id="from_page" placeholder="Вид сырья">
+                    <span id="helpBlock" class="help-block from_page-error" style="display: none;"></span>
+                </div>
+                <button type="submit" class="btn btn-default">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

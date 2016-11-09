@@ -19,15 +19,19 @@
     <link href="{% static 'core/css/landing-page.css' %}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{% static 'core/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/popup.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/style.css' %}" rel="stylesheet" type="text/css">
+{#    <link href="{% static 'core/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">#}
     <link href="{% static 'core/css/slick.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'core/css/slick-theme.css' %}" rel="stylesheet" type="text/css">
+
     <script src="https://api-maps.yandex.ru/2.1/?lang=eu_RU" type="text/javascript"></script>
     <script src="{% static 'core/js/jquery.js' %}"></script>
     <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'core/js/jquerycookie.js' %}"></script>
+    <script src="{% static 'core/js/popup.js' %}"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+{#    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">#}
 
 </head>
 
@@ -60,8 +64,9 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <p class="navbar-text" style="color: black">{{ page.phone }}<br/>
-                        info@zelenaya-strana.ru</p>
+                        <p class="navbar-text" style="color: black"><a style="line-height: 0px;" href="tel:{{ page.phone }}">{{ page.phone }}</a><br/>
+                        <a style="line-height: 0px;" href="mailto:info@zelenaya-strana.ru">info@zelenaya-strana.ru</a><br/>
+                        </p>
                     </li>
                 </ul>
             </div>
