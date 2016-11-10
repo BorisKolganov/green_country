@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotFound, Http404
 from django.views.generic import TemplateView, FormView
 
 from core.forms import CallBackForm
@@ -41,12 +41,16 @@ class CallBackView(FormView):
 class RawView(TemplateView):
     template_name = 'raw_page.html'
 
-    def get_context_data(self, pk, **kwargs):
-        raw_details = RawDetails.objects.filter(main_raw__id=pk)
-        print raw_details
-        return {}
-        # page = get_object_or_404(Page, slug=slug)
-        # context = {
-        #     'page_name': page.slug
-        # }
-        # return context
+    def get_context_data(self, slug, **kwargs):
+        raw_details = RawDetails.objects.filter(main_raw__slug=slug)
+        if not raw_details:
+            raise Http404()
+        main_raw = MainRaw.objects.filter(slug=slug).first()
+        context = {
+            'page': MainPage.objects.all().first(),
+            'raw_details': raw_details,
+            'header': main_raw.details_header,
+            'text': main_raw.text
+        }
+        print context
+        return context

@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="content-section-b">
+    <div class="content-section-a">
         <a name="raw" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
         <div class="container">
             <div class="row">
@@ -50,7 +50,7 @@
                 <div class="col-lg-1"></div>
                 {% for r in raw %}
                     <div class="col-sm-3 col-lg-2 col-md-3" style="text-align: center">
-                        <a href="{% url 'core:raw' r.id %}">
+                        <a href="{% url 'core:raw' r.slug %}">
                             <img src="{{ r.image.url }}" alt="{{ r.text }}" class="img-responsive">
                         </a>
                         <div class="caption" style="margin-top: 20px;">
@@ -59,14 +59,16 @@
                     </div>
                 {% endfor %}
             </div>
+            <br/>
+            <br/>
             <div class="row" style="text-align: center">
-                <a class="popup-with-form btn btn-success" href="#callback-form">Заказать вывоз прямо сейчас</a>
+                <a class="popup-with-form btn btn-success" href="#callback-form" style="height: 50px; padding-top: 13px; width: 300px">Заказать вывоз прямо сейчас</a>
             </div>
         </div>
     <!-- /.content-section-a -->
     </div>
 
-    <div class="content-section-a">
+    <div class="content-section-b">
         <div class="container-fluid" >
         <a name="advantage" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
@@ -85,7 +87,7 @@
     </div>
     <!-- /.content-section-b -->
 
-    <div class="content-section-b">
+    <div class="content-section-a">
 
         <div class="container">
             <a name="about" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
@@ -102,7 +104,7 @@
         </div>
     </div>
 
-    <div class="content-section-a">
+    <div class="content-section-b">
         <div class="container">
         <a name="clients" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
@@ -125,7 +127,7 @@
         </div>
     </div>
 
-     <div class="content-section-b">
+     <div class="content-section-a">
         <div class="container">
             <a name="contacts" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
@@ -151,57 +153,34 @@
             <a name="contacts" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
                <div class="col-lg-12" style="text-align: center">
-{#                    <hr class="intro-divider" />#}
-                    <h2>Остались вопросы? <br/>Мы вам перезвоним! <span class="icon icon-envelope"></span> </h2>
-{#                    <hr class="intro-divider" />#}
+                    <h2>Остались вопросы? <br/>Мы вам перезвоним! <span class="icon icon-phone"></span> </h2>
                 </div>
                 <div class="col-lg-offset-4 col-lg-4">
-            <form action="{% url 'core:callback' %}" class="white-popup-block well callback-form" style="margin-top: 50px; color: black; padding-top: 0px;">
+            <form action="{% url 'core:callback' %}" class="white-popup-block well callback-form" style="margin-top: 50px; color: black; padding-top: 0px;" data-id="footer-form">
                 <div style="text-align: center; margin-bottom: 20px;" >
-                    <h3>Заказать вывоз</h3>
+                    <h3>Заказать обратный звонок</h3>
                 </div>
                 {% csrf_token %}
-                  <div class="form-group name">
+                  <div class="form-group name-footer-form">
                     <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
-                    <span id="helpBlock" class="help-block name-error" style="display: none;"></span>
+                    <span id="helpBlock" class="help-block name-footer-form-error" style="display: none;"></span>
                   </div>
-                  <div class="form-group phone">
+                  <div class="form-group phone-footer-form">
                     <input name="phone" type="text" class="form-control" id="phone" placeholder="Ваш телефон">
-                    <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>
+                    <span id="helpBlock" class="help-block phone-footer-form-error" style="display: none;"></span>
                   </div>
                 <div style="text-align: center">
                 <button type="submit" class="btn btn-default">Отправить заявку</button>
                 </div>
             </form>
+             <div class="form-message-footer-form" style="display: none">
+                <div class="clearfix"></div>
+                <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>
+            </div>
         </div>
             </div>
         </div>
     </div>
 
-<!-- form itself -->
-<div class="container mfp-hide" id="callback-form" >
-    <div class="row">
-        <div class="col-lg-offset-4 col-lg-4">
-            <form action="{% url 'core:callback' %}" class="white-popup-block well callback-form" style="margin-top: 50px; color: black; padding-top: 0px;">
-                <div style="text-align: center; margin-bottom: 20px;" >
-                    <h3>Заказать вывоз</h3>
-                </div>
-                {% csrf_token %}
-                  <div class="form-group name">
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
-                    <span id="helpBlock" class="help-block name-error" style="display: none;"></span>
-                  </div>
-                  <div class="form-group phone">
-                    <input name="phone" type="text" class="form-control" id="phone" placeholder="Ваш телефон">
-                    <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>
-                  </div>
-                <div class="form-group from_page">
-                    <input name="from_page" value="{{ page_name }}" type="text" class="form-control" id="from_page" placeholder="Вид сырья">
-                    <span id="helpBlock" class="help-block from_page-error" style="display: none;"></span>
-                </div>
-                <button type="submit" class="btn btn-default">Отправить заявку</button>
-            </form>
-        </div>
-    </div>
-</div>
+    {% include 'blocks/form.html' with hide_weight=True id='popup' header='Заказать вывоз' %}
 {% endblock %}

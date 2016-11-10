@@ -75,13 +75,13 @@ class CallBack(models.Model):
     name = models.CharField(max_length=64, verbose_name=u'ФИО')
     phone = models.CharField(max_length=25, verbose_name=u'Телефон')
     checked = models.BooleanField(default=False, verbose_name=u'Перезвонили?')
+    weight = models.IntegerField(default=0, verbose_name=u'Вес в кг')
     updated = models.DateTimeField(auto_now=True, verbose_name='Обновлено в')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Создано в')
-    from_page = models.CharField(max_length=64, verbose_name=u'С какой страницы отправили форму')
+    raw_type = models.CharField(max_length=64, verbose_name=u'С какой страницы отправили форму')
 
     def __unicode__(self):
         return '{} {}'.format(self.name, self.phone)
-
 
 
 class RawDetails(models.Model):
@@ -91,8 +91,8 @@ class RawDetails(models.Model):
 
     image = models.ImageField(upload_to='raw', verbose_name=u'Фото сырья')
     name = models.CharField(max_length=100, verbose_name=u'Название сырья')
-    description = models.CharField(max_length=250, verbose_name=u'Описание сырья')
-    price = models.CharField(max_length=100, verbose_name=u'Стоимость сырья')
+    description = models.CharField(max_length=250, verbose_name=u'Описание сырья', blank=True)
+    price = models.CharField(max_length=100, verbose_name=u'Стоимость сырья', blank=True)
 
     main_raw = models.ForeignKey('MainRaw', verbose_name=u'Сырье на главное')
 
@@ -107,7 +107,9 @@ class MainRaw(models.Model):
 
     image = models.ImageField(upload_to='raw/', verbose_name=u'Фото на главной')
     text = models.CharField(max_length=100, verbose_name=u'Текст под фото')
-    # description = models.CharField(max_length=250, verbose_name=u'Описание')
+    slug = models.CharField(max_length=100, verbose_name=u'Текст в урле', blank=True)
+    details_header = models.CharField(max_length=100, verbose_name=u'Текст заговлока в подробнее')
+    details_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст в подробнее')
 
     def __unicode__(self):
         return self.text
@@ -177,7 +179,7 @@ def send_callback_email(sender, instance, **kwargs):
            u'Данное обращение было в {}'.format(instance.name,
                                                 instance.phone,
                                                 instance.created.astimezone(tz).strftime('%d.%m.%Y %H:%M'),
-                                                instance.from_page)
+                                                instance.raw_type)
     sender_email = settings.SENDER_EMAIL
     to = settings.OPERATORS_EMAIL
     send_mail(subject, body, sender_email, to)

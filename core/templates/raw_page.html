@@ -1,38 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
     <br/>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
-            </div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6 well">
-                <br/>
-                <form action="{% url 'core:callback' %}" method="post" class="callback-form">
-                {% csrf_token %}
-                  <div class="form-group name">
-                    <label for="name">Ваше имя</label>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
-                    <span id="helpBlock" class="help-block name-error" style="display: none;"></span>
-                  </div>
-                  <div class="form-group phone">
-                    <label for="phone">Ваш телефон</label>
-                    <input name="phone" type="text" class="form-control" id="phone" placeholder="Телефон">
-                    <span id="helpBlock" class="help-block phone-error" style="display: none;"></span>
-                  </div>
-                  <button type="submit" class="btn btn-default">Отправить</button>
-                  <input name="from_page" value="{{ page_name }}" type="hidden">
-                </form>
 
-                <div class="form-message" style="display: none">
-                    <div class="clearfix"></div>
-                    <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>
+     <div class="content-section-b">
+        <a name="raw" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="text-align: center">
+                    <hr class="intro-divider" />
+                    <h2>{{ header }}</h2>
+                    <hr class="intro-divider" />
                 </div>
-
+                {% for r in raw_details %}
+                    <div class="col-sm-4 col-lg-4 col-md-4" style="text-align: center">
+                        <img src="{{ r.image.url }}" alt="{{ r.text }}" class="img-responsive">
+                        <h4>{{ r.name }}</h4>
+                    </div>
+                {% endfor %}
+            </div>
+            <br/>
+            <br/>
+            <div class="row" style="text-align: center">
+                <a class="popup-with-form btn btn-success" href="#callback-form" style="height: 50px; padding-top: 13px; width: 300px">Заказать вывоз прямо сейчас</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ text }}
+                </div>
             </div>
         </div>
     </div>
+    {% include 'blocks/form.html' with hide_raw=True id='raw_detail' %}
 {% endblock %}

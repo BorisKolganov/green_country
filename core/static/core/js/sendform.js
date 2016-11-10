@@ -7,21 +7,30 @@ $(document).ready(function () {
     $('.callback-form').submit(function (event) {
         event.preventDefault();
         var $this = $(this);
+        var id = $this.data('id');
+        console.log(id)
+        if (id) {
+            id = '-' + id;
+        } else {
+            id = '';
+        }
         $.each(fields, function (i, val) {
-            $(val).removeClass('has-error');
-            $(val + '-error').hide();
+            console.log(val);
+            console.log(val + '-' + id)
+            $(val + id).removeClass('has-error');
+            $(val + id + '-error').hide();
         });
 
         $.post($this.attr('action'), $this.serialize()).done(function (data) {
             if(data.status == 'not ok') {
                 $.each(data.errors, function (key, val) {
-                    $('.' + key).addClass('has-error');
-                    $('.' + key + '-error').html(val);
-                    $('.' + key + '-error').show();
+                    $('.' + key + id).addClass('has-error');
+                    $('.' + key + id + '-error').html(val);
+                    $('.' + key + id + '-error').show();
                 });
             } else if (data.status == 'ok') {
                 $this.hide();
-                $('.form-message').show();
+                $('.form-message' + id).show();
             }
         }).fail(function (data) {
             console.log(data);

@@ -1,0 +1,31 @@
+<div class="col-lg-offset-5 col-lg-2 mfp-hide white-popup-block" id="callback-form" >
+<form action="{% url 'core:callback' %}" class="well callback-form"  data-id="{{ id }}" style="color: black; padding-top: 0px; margin-right: -15px;">
+    <div style="text-align: center; margin-bottom: 20px;" >
+        <h3>{{ header }}</h3>
+    </div>
+    {% csrf_token %}
+      <div class="form-group name-{{ id }}">
+        <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
+        <span id="helpBlock" class="help-block name-{{ id }}-error" style="display: none; "></span>
+      </div>
+      <div class="form-group phone-{{ id }}">
+        <input name="phone" type="text" class="form-control" id="phone" placeholder="Ваш телефон">
+        <span id="helpBlock" class="help-block phone-{{ id }}-error" style="display: none;"></span>
+      </div>
+    <div class="form-group raw_type-{{ id }}">
+        <input name="raw_type" value="{{ raw_type }}" type="{% if hide_raw %}hidden{% else %}text{% endif %}" class="form-control" id="raw_type" placeholder="Вид сырья">
+        <span id="helpBlock" class="help-block raw_type-{{ id }}-error" style="display: none;"></span>
+    </div>
+    <div class="form-group weight-{{ id }}">
+        <input name="weight" value="{{ raw_type }}" type="{% if hide_weight %}hidden{% else %}number{% endif %}" class="form-control" id="weight" placeholder="Вес">
+        <span id="helpBlock" class="help-block weight-{{ id }}-error" style="display: none;"></span>
+    </div>
+    <div style="text-align: center">
+        <button type="submit" class="btn btn-default">Отправить заявку</button>
+    </div>
+</form>
+<div class="form-message-{{ id }} well " style="display: none; margin-right: -15px;" >
+    <div class="clearfix"></div>
+    <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>
+</div>
+</div>
