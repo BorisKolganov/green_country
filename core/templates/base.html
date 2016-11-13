@@ -70,8 +70,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <p class="navbar-text" style="color: black"><a style="line-height: 0px;" href="tel:{{ page.phone }}">{{ page.phone }}</a><br/>
-                        <a style="line-height: 0px;" href="mailto:info@zelenaya-strana.ru">info@zelenaya-strana.ru</a><br/>
+                        <p class="navbar-text" style="color: black"><a style="line-height: 0px;" href="tel:{{ page.phone }}"><span class="icon-phone"></span> {{ page.phone }}</a><br/>
+                        <a style="line-height: 0px;" href="mailto:info@zelenaya-strana.ru"><span class="icon-envelope"></span> info@zelenaya-strana.ru</a><br/>
                         </p>
                     </li>
                 </ul>
@@ -111,11 +111,7 @@
     </footer>
     {% endblock %}
     <!-- form itself -->
-
-    <script src="{% static 'core/js/sendform.js' %}"></script>
     <script src="{% static 'core/js/slick.js' %}"></script>
-    <script src="{% static 'core/js/clients.js' %}"></script>
-
 </body>
 
 </html>

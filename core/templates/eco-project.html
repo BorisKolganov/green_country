@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br/>
+    <br/>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">{{ eco.first_header }}</h2>
+                    <p class="lead">{{ eco.first_text|safe }}</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="{{ eco.first_image.url }}" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">{{ eco.second_header }}</h2>
+                    <p class="lead">{{ eco.second_text|safe }}</p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="{{ eco.second_image.url }}" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">{{ eco.third_header }}</h2>
+                    <p class="lead">{{ eco.third_text|safe }}</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="{{ eco.third_image.url }}" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="content-section-b">
+        <div class="container">
+            <div class="row" style="text-align: center">
+                <div class="photos">
+                    {% for p in photos %}
+                        <div class="col-lg-2 col-md-3">
+                            <img class="img-rounded img-responsive" src="{{ p.image.url }}" alt="{{ p.text }}" >
+                            <h5>{{ p.text }}</h5>
+                        </div>
+                    {% endfor %}
+                </div>
+            <br/>
+                <a class="popup-with-form btn btn-success" href="#eco-form" style="height: 50px; padding-top: 13px; width: 300px">Принять участие в проекте</a>
+            </div>
+        </div>
+    </div>
+    {% include 'blocks/eco-form.html' %}
+{% endblock %}

@@ -110,9 +110,34 @@ class MainRaw(models.Model):
     slug = models.CharField(max_length=100, verbose_name=u'Текст в урле', blank=True)
     details_header = models.CharField(max_length=100, verbose_name=u'Текст заговлока в подробнее')
     details_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст в подробнее')
+    archive = models.BooleanField(default=False, verbose_name=u'Архив?')
 
     def __unicode__(self):
         return self.text
+
+
+class EcoProject(models.Model):
+    class Meta:
+        verbose_name = u'Эко-проект'
+        verbose_name_plural = u'Эко-проекты'
+
+    image = models.ImageField(upload_to='raw/', verbose_name=u'Фото на главной')
+    text = models.CharField(max_length=100, verbose_name=u'Текст под фото')
+
+    first_image = models.ImageField(upload_to='ecoproject/', verbose_name=u'Первая картинка', blank=True)
+    first_header = models.CharField(max_length=100, verbose_name=u'Первый заголовок', blank=True)
+    first_text = RichTextUploadingField(max_length=1000, verbose_name=u'Первый текст', blank=True)
+
+    second_image = models.ImageField(upload_to='ecoproject', verbose_name=u'Вторая картинка', blank=True)
+    second_header = models.CharField(max_length=100, verbose_name=u'Второй заголовок', blank=True)
+    second_text = RichTextUploadingField(max_length=1000, verbose_name=u'Второй текст', blank=True)
+
+    third_image = models.ImageField(upload_to='ecoproject', verbose_name=u'Терья картинка', blank=True)
+    third_header = models.CharField(max_length=100, verbose_name=u'Третий заголовок', blank=True)
+    third_text = RichTextUploadingField(max_length=1000, verbose_name=u'Третий текст', blank=True)
+
+    def __unicode__(self):
+        return self.first_text[:100]
 
 
 class Clients(models.Model):
@@ -169,6 +194,34 @@ class MainPage(models.Model):
 
     def __unicode__(self):
         return self.header
+
+
+class EcoPhoto(models.Model):
+    class Meta:
+        verbose_name = u'Фото в эко проекте'
+        verbose_name_plural = u'Фото в эко проекте'
+
+    image = models.ImageField(upload_to='eco/', verbose_name=u'Фото эко')
+    text = models.CharField(max_length=100, verbose_name=u'Текст эко', blank=True)
+
+    def __unicode__(self):
+        return self.text
+
+
+class EcoParticipant(models.Model):
+    class Meta:
+        verbose_name_plural = u'Участиники эко проекта'
+        verbose_name = u'Участник эко проекта'
+
+    name = models.CharField(max_length=250, verbose_name=u'ФИО')
+    phone = models.CharField(max_length=50, verbose_name=u'Телефон')
+    org = models.CharField(max_length=250, verbose_name=u'Название организации')
+    email = models.EmailField(max_length=200, verbose_name=u'e-mail')
+
+    is_participant = models.BooleanField(default=False, verbose_name=u'Участник?')
+
+    def __unicode__(self):
+        return self.email
 
 
 @receiver(post_save, sender=CallBack)
