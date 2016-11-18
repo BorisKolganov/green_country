@@ -6,7 +6,7 @@ from django.http import JsonResponse, HttpResponseNotFound, Http404
 from django.views.generic import TemplateView, FormView
 
 from core.forms import CallBackForm, ParticipantForm
-from core.models import  MainRaw, Advantage, Clients, RawDetails, MainPage, EcoProject, EcoPhoto
+from core.models import  MainRaw, Advantage, Clients, RawDetails, MainPage, EcoProject, EcoPhoto, Partner
 
 
 class IndexView(TemplateView):
@@ -74,7 +74,8 @@ class EcoView(TemplateView):
         return {
             'eco': EcoProject.objects.first(),
             'page': MainPage.objects.first(),
-            'photos': EcoPhoto.objects.all()
+            'photos': EcoPhoto.objects.all(),
+            'partners': Partner.objects.all(),
         }
 
 

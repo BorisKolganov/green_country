@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 
 from core.models import User, CallBack, RawDetails, MainRaw, Clients, Advantage, MainPage, EcoProject, EcoPhoto, \
-    EcoParticipant
+    EcoParticipant, Partner
 
 
 @admin.register(User)
@@ -47,3 +47,4 @@ admin.site.register(MainPage)
 admin.site.register(EcoProject)
 admin.site.register(EcoParticipant)
 admin.site.register(EcoPhoto)
+admin.site.register(Partner)

@@ -138,13 +138,24 @@ class EcoProject(models.Model):
     third_text = RichTextUploadingField(max_length=1000, verbose_name=u'Третий текст', blank=True)
 
     clients_header = models.CharField(max_length=250, verbose_name=u'Заголовок клиентов', blank=True)
-    clients = models.ManyToManyField('core.Clients', verbose_name=u'Клиенты')
 
     placemarks_header = models.CharField(max_length=250, verbose_name=u'Заголовок над картой', blank=True)
     placemarks = models.TextField(verbose_name=u'Метки на карте', blank=True, help_text='[[долгота, широта, "текст"], ...]')
 
     def __unicode__(self):
         return self.first_text[:100]
+
+
+class Partner(models.Model):
+    class Meta:
+        verbose_name = u'Партнер'
+        verbose_name_plural = u'Партнеры'
+
+    image = models.ImageField(upload_to='partners/', verbose_name=u'Фото партнеров')
+    text = models.CharField(max_length=100, verbose_name=u'Текст партнеров', blank=True)
+
+    def __unicode__(self):
+        return str(self.id) + ' ' + self.text
 
 
 class Clients(models.Model):
