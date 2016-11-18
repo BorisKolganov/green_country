@@ -136,6 +136,12 @@ class EcoProject(models.Model):
     third_header = models.CharField(max_length=100, verbose_name=u'Третий заголовок', blank=True)
     third_text = RichTextUploadingField(max_length=1000, verbose_name=u'Третий текст', blank=True)
 
+    clients_header = models.CharField(max_length=250, verbose_name=u'Заголовок клиентов', blank=True)
+    clients = models.ManyToManyField('core.Clients', verbose_name=u'Клиенты')
+
+    placemarks_header = models.CharField(max_length=250, verbose_name=u'Заголовок над картой', blank=True)
+    placemarks = models.TextField(verbose_name=u'Метки на карте', blank=True, help_text='[[долгота, широта, "текст"], ...]')
+
     def __unicode__(self):
         return self.first_text[:100]
 
@@ -146,10 +152,10 @@ class Clients(models.Model):
         verbose_name_plural = u'Клиенты'
 
     image = models.ImageField(upload_to='clients/', verbose_name=u'Фото клиентов')
-    text = models.CharField(max_length=100, verbose_name=u'Текст клиента')
+    text = models.CharField(max_length=100, verbose_name=u'Текст клиента', blank=True)
 
     def __unicode__(self):
-        return self.text
+        return str(self.id) + ' ' + self.text
 
 
 class Advantage(models.Model):
@@ -158,7 +164,7 @@ class Advantage(models.Model):
         verbose_name_plural = u'Преимущества'
 
     image = models.ImageField(upload_to='advantage/', verbose_name=u'Фото приемущества')
-    text = models.CharField(max_length=100, verbose_name=u'Текст приемущества')
+    text = models.CharField(max_length=100, verbose_name=u'Текст приемущества', blank=True)
 
     def __unicode__(self):
         return self.text
@@ -169,28 +175,34 @@ class MainPage(models.Model):
         verbose_name = u'Главная страница'
         verbose_name_plural = u'Главные страницы'
 
-    header = models.CharField(max_length=250, verbose_name=u'Текст на картинке')
-    header_image = models.ImageField(upload_to='header/', verbose_name=u'Фоновая картинка заголовка')
+    header = models.CharField(max_length=250, verbose_name=u'Текст на картинке', blank=True)
+    header_image = models.ImageField(upload_to='header/', verbose_name=u'Фоновая картинка заголовка', blank=True)
 
-    service_header = models.CharField(max_length=250, verbose_name=u'Заголовок услуг на странице')
-    service_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок услуг в хедере')
+    service_header = models.CharField(max_length=250, verbose_name=u'Заголовок услуг на странице', blank=True)
+    service_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок услуг в хедере', blank=True)
 
-    advantage_header = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ на страницк')
-    advantage_image = models.ImageField(upload_to='headers/', verbose_name=u'Картина преимуществ')
-    advantage_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ в хедере')
+    advantage_header = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ на странице', blank=True)
+    advantage_image = models.ImageField(upload_to='headers/', verbose_name=u'Картина преимуществ', blank=True)
+    advantage_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок преимуществ в хедере', blank=True)
 
-    about_header = models.CharField(max_length=250, verbose_name=u'Заголовок о нас на странице')
-    about_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст о нас')
-    about_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок о нас в хедере')
+    about_header = models.CharField(max_length=250, verbose_name=u'Заголовок о нас на странице', blank=True)
+    about_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст о нас', blank=True)
+    about_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок о нас в хедере', blank=True)
 
-    clients_header = models.CharField(max_length=250, verbose_name=u'Загловок клиентов на странице')
-    clients_header_link = models.CharField(max_length=250, verbose_name=u'Загловок клиентов в хедере')
+    clients_header = models.CharField(max_length=250, verbose_name=u'Загловок клиентов на странице', blank=True)
+    clients_header_link = models.CharField(max_length=250, verbose_name=u'Загловок клиентов в хедере', blank=True)
 
-    contacts_header = models.CharField(max_length=250, verbose_name=u'Заголовок контактов на странице')
-    contacts_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст контактов')
-    contacts_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок контактов в хедере')
+    contacts_header = models.CharField(max_length=250, verbose_name=u'Заголовок контактов на странице', blank=True)
+    contacts_text = RichTextUploadingField(max_length=2000, verbose_name=u'Текст контактов', blank=True)
+    contacts_header_link = models.CharField(max_length=250, verbose_name=u'Заголовок контактов в хедере', blank=True)
 
-    phone = models.CharField(max_length=30, verbose_name=u'Телефон в хедере')
+    phone = models.CharField(max_length=30, verbose_name=u'Телефон в хедере', blank=True)
+
+    footer_text = models.CharField(max_length=250, verbose_name=u'Текст в футере', blank=True)
+
+    longitude = models.FloatField(verbose_name=u'Долгота на карте')
+    latitude = models.FloatField(verbose_name=u'Широта на карте')
+    name_on_map = models.CharField(max_length=200, verbose_name=u'Название на карте')
 
     def __unicode__(self):
         return self.header

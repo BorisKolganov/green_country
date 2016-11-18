@@ -25,12 +25,4 @@ $(document).ready(function () {
         autoplay: true,
         autoplaySpeed: 2000
     });
-    var map;
-    ymaps.ready(function () {
-        map =  new ymaps.Map("map", {
-            center: [55.76, 37.64],
-            zoom: 11
-        });
-    })
-
 });

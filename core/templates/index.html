@@ -13,7 +13,7 @@
 
                 <div class="col-lg-offset-9 col-lg-3 well" style="margin-top: 50px; color: black; background-color: rgba(245, 245, 245, 0.8); padding-top: 0px;">
                     <h3>Узнать цену за кг</h3>
-                    <form action="{% url 'core:callback' %}" method="post" class="callback-form">
+                    <form action="{% url 'core:callback' %}" method="post" class="callback-form" style="font-weight: normal">
                     {% csrf_token %}
                           <div class="form-group name">
                             <input name="name" type="text" class="form-control" id="name" placeholder="Ваше имя">
@@ -53,19 +53,21 @@
                     <div class="col-sm-3 col-lg-2 col-md-3" style="text-align: center">
                         <a href="{% url 'core:raw' r.slug %}">
                             <img src="{{ r.image.url }}" alt="{{ r.text }}" class="img-responsive">
+
+                            <div class="caption" style="margin-top: 20px; color: black">
+                                <h4>{{ r.text }}</h4>
+                            </div>
                         </a>
-                        <div class="caption" style="margin-top: 20px;">
-                            <h4>{{ r.text }}</h4>
-                        </div>
                     </div>
                 {% endfor %}
                 <div class="col-sm-3 col-lg-2 col-md-3" style="text-align: center">
                     <a href="{% url 'core:eco' %}">
                         <img src="{{ eco.image.url }}" alt="{{ eco.text }}" class="img-responsive">
+                    
+                        <div class="caption" style="margin-top: 20px; color:black;">
+                            <h4>{{ eco.text }}</h4>
+                        </div>
                     </a>
-                    <div class="caption" style="margin-top: 20px;">
-                        <h4>{{ eco.text }}</h4>
-                    </div>
                 </div>
             </div>
             <br/>
@@ -81,12 +83,12 @@
         <div class="container-fluid" >
         <a name="advantage" style="padding-top: 60px; display: block; margin-top: -50px;"></a>
             <div class="row">
-                <div class="col-lg-12" style="text-align: center">
+                <div class="col-lg-12" style="text-align: center;">
                     <hr class="intro-divider" />
                     <h2>{{ page.advantage_header }}</h2>
                     <hr class="intro-divider" />
                 </div>
-                    <div class="col-lg-12" style="text-align: center">
+                    <div class="col-lg-12" style="text-align: center; padding-right: 0; padding-left: 0;">
                         <img class="img-responsive" src="{{ page.advantage_image.url }}">
                     </div>
             </div>
@@ -148,7 +150,12 @@
                 <div class="col-lg-12">
                     {{ page.contacts_text|safe }}
                 </div>
-                <div class="col-lg-12">
+            </div>
+        </div>
+         <br/>
+         <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12" style="padding-left: 0; padding-right: 0;">
                     <div id="map" style="width: 100%; height: 400px;">
 
                     </div>
@@ -164,7 +171,7 @@
                     <h2>Остались вопросы? <br/>Мы вам перезвоним! <span class="icon icon-phone"></span> </h2>
                 </div>
                 <div class="col-lg-offset-4 col-lg-4">
-            <form action="{% url 'core:callback' %}" class="white-popup-block well callback-form" style="color: black; padding-top: 0px;" data-id="footer-form">
+            <form action="{% url 'core:callback' %}" class="white-popup-block well callback-form" style="color: black; padding-top: 0px; font-weight: normal" data-id="footer-form">
                 <div style="text-align: center; margin-bottom: 20px;" >
                     <h3>Заказать обратный звонок</h3>
                 </div>
@@ -190,7 +197,28 @@
         </div>
     </div>
     <script src="{% static 'core/js/clients.js' %}"></script>
+    <script>
+    {% load l10n %}
+    $(document).ready(function () {
+        var map;
+        ymaps.ready(function () {
+            map =  new ymaps.Map("map", {
+                center: [{{ page.longitude|unlocalize }}, {{ page.latitude|unlocalize }}],
+                zoom: 11
+            });
+            map.geoObjects.add(new ymaps.Placemark(
+            [{{ page.longitude|unlocalize }}, {{ page.latitude|unlocalize }}], {
+                balloonContent: '<strong>' + "{{ page.name_on_map }}" + '</strong> <br/>'
+            }, {
+                preset: 'islands#dotIcon',
+                iconColor: '#735184'
+            })
+        )
+        });
 
+    });
+
+    </script>
     {% include 'blocks/form.html' with hide_weight=True id='popup' header='Заказать вывоз' %}
 
 {% endblock %}

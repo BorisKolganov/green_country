@@ -46,7 +46,7 @@ $(document).ready(function () {
 	});
     
     $('.photos').slick({
-        slidesToShow: 5,
+        slidesToShow: 4,
         infinite: true,
         responsive: [
             {

@@ -20,7 +20,7 @@
                         <img src="{{ r.image.url }}" alt="{{ r.text }}" class="img-responsive img-rounded" style="">
                         <h4>{{ r.name }}</h4>
                         <p style="font-weight: 300">{{ r.description }}
-                        <br/><span style="font-weight: 500;">{{ r.price }}</span></p>
+                        <br/><span style="font-weight: 600;">{{ r.price }}</span></p>
                     </div>
                     {% if forloop.counter|divisibleby:3 %}
                        </div>
@@ -34,7 +34,13 @@
                 <a class="popup-with-form btn btn-success" href="#callback-form" style="height: 50px; padding-top: 13px; width: 300px">{{ button_text }}</a>
             </div>
         {% endif %}
+
             <div class="row">
+                <div class="col-lg-12" style="text-align: center; margin-bottom: 25px;">
+                    <hr class="intro-divider" />
+                    <h2>{{ header }}</h2>
+                    <hr class="intro-divider" />
+                </div>
                 <div class="col-lg-12">
                     {{ text|safe  }}
                 </div>
