@@ -35,7 +35,7 @@ class UserAdmin(DjangoUserAdmin):
 
 @admin.register(CallBack)
 class CallBackAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'checked', 'created')
+    list_display = ('name', 'phone', 'raw_type', 'created', 'checked')
     list_filter = ('checked', 'raw_type')
     list_editable = ('checked',)
 
