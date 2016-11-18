@@ -52,6 +52,7 @@ class RawView(TemplateView):
                 'page': MainPage.objects.all().first(),
                 'text': main_raw.details_text,
                 'header': main_raw.details_header,
+                'raw_type': slug,
                 'button_text': u'Заказать уничтожение документов'
             }
         else:
@@ -59,6 +60,7 @@ class RawView(TemplateView):
                 'page': MainPage.objects.all().first(),
                 'text': main_raw.details_text,
                 'header': main_raw.details_header,
+                'raw_type': slug,
                 'raw_details': main_raw.rawdetails_set.all(),
                 'button_text': u'Заказать вывоз прямо сейчас'
             }

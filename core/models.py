@@ -76,9 +76,10 @@ class CallBack(models.Model):
     phone = models.CharField(max_length=25, verbose_name=u'Телефон')
     checked = models.BooleanField(default=False, verbose_name=u'Перезвонили?')
     weight = models.IntegerField(default=0, verbose_name=u'Вес в кг')
+    address = models.CharField(max_length=250, verbose_name=u'Адрес доставки', default='', blank=True)
     updated = models.DateTimeField(auto_now=True, verbose_name='Обновлено в')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Создано в')
-    raw_type = models.CharField(max_length=64, verbose_name=u'С какой страницы отправили форму')
+    raw_type = models.CharField(max_length=64, verbose_name=u'Тип сырья', blank=True)
 
     def __unicode__(self):
         return '{} {}'.format(self.name, self.phone)

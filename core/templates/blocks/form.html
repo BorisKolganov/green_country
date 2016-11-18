@@ -18,8 +18,12 @@
         <span id="helpBlock" class="help-block raw_type-{{ id }}-error" style="display: none;"></span>
     </div>
     <div class="form-group weight-{{ id }}">
-        <input name="weight" value="{{ raw_type }}" type="{% if hide_weight %}hidden{% else %}number{% endif %}" class="form-control" id="weight" placeholder="Вес">
+        <input name="weight" value="" type="{% if hide_weight %}hidden{% else %}number{% endif %}" class="form-control" id="weight" placeholder="Вес">
         <span id="helpBlock" class="help-block weight-{{ id }}-error" style="display: none;"></span>
+    </div>
+    <div class="form-group address-{{ id }}">
+        <input name="address" value="" type="text" class="form-control" id="address" placeholder="Адрес">
+        <span id="helpBlock" class="help-block address-{{ id }}-error" style="display: none;"></span>
     </div>
     <div style="text-align: center">
         <button type="submit" class="btn btn-default">Отправить заявку</button>
