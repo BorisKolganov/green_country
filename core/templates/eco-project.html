@@ -6,14 +6,20 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-sm-6">
+                <div class="col-lg-5 col-sm-6" style="text-align: center">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">{{ eco.first_header }}</h2>
+                    <h2 class="section-heading" style="text-align: center">{{ eco.first_header }}</h2>
                     <p class="lead">{{ eco.first_text|safe }}</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="{{ eco.first_image.url }}" alt="">
+                    {% if eco.first_use_video %}
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe class="embed-responsive-item" src="{{ eco.first_video }}"></iframe>
+                        </div>
+                    {% else %}
+                        <img class="img-responsive img-rounded" src="{{ eco.first_image.url }}" alt="">
+                    {% endif %}
                 </div>
             </div>
 
@@ -26,14 +32,14 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">{{ eco.second_header }}</h2>
+                    <h2 class="section-heading" style="text-align: center">{{ eco.second_header }}</h2>
                     <p class="lead">{{ eco.second_text|safe }}</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="{{ eco.second_image.url }}" alt="">
+                    <img class="img-responsive img-rounded" src="{{ eco.second_image.url }}" alt="">
                 </div>
             </div>
 
@@ -47,21 +53,23 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">{{ eco.third_header }}</h2>
+                    <h2 class="section-heading" style="text-align: center">{{ eco.third_header }}</h2>
                     <p class="lead">{{ eco.third_text|safe }}</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="{{ eco.third_image.url }}" alt="">
+                    <img class="img-responsive img-rounded" src="{{ eco.third_image.url }}" alt="">
                 </div>
             </div>
-
+            <br/>
+            <div class="row" style="text-align: center">
+                <a class="popup-with-form btn btn-success" href="#eco-form" style="height: 50px; padding-top: 13px; width: 300px">Принять участие в ЭКО-Проекте</a>
+            </div>
         </div>
-
     </div>
 
     <div class="content-section-a">
         <div class="container">
-            <div class="row" style="text-align: center">
+            <div class="row" style="text-align: center; height: 300px; overflow: hidden">
                 <div class="photos">
                     {% for p in photos %}
                         <div class="col-lg-2 col-md-3">
@@ -70,8 +78,6 @@
                         </div>
                     {% endfor %}
                 </div>
-            <br/>
-                <a class="popup-with-form btn btn-success" href="#eco-form" style="height: 50px; padding-top: 13px; width: 300px">Принять участие в ЭКО-Проекте</a>
             </div>
         </div>
     </div>

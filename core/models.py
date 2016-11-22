@@ -126,6 +126,9 @@ class EcoProject(models.Model):
     text = models.CharField(max_length=100, verbose_name=u'Текст под фото')
 
     first_image = models.ImageField(upload_to='ecoproject/', verbose_name=u'Первая картинка', blank=True)
+    first_video = models.CharField(max_length=250, verbose_name=u'Видео на youtube', blank=True)
+    first_use_video = models.BooleanField(default=False, verbose_name=u'Показывать видео?')
+
     first_header = models.CharField(max_length=100, verbose_name=u'Первый заголовок', blank=True)
     first_text = RichTextUploadingField(max_length=1000, verbose_name=u'Первый текст', blank=True)
 
@@ -212,6 +215,11 @@ class MainPage(models.Model):
 
     footer_text = models.CharField(max_length=250, verbose_name=u'Текст в футере', blank=True)
 
+    vk = models.CharField(max_length=250, verbose_name=u'Ссылка на vk', blank=True)
+    fb = models.CharField(max_length=250, verbose_name=u'Ссылка на fb', blank=True)
+    instagram = models.CharField(max_length=250, verbose_name=u'Ссылка на инстаграм', blank=True)
+    tw = models.CharField(max_length=250, verbose_name=u'Ссылка на твиттер', blank=True)
+
     longitude = models.FloatField(verbose_name=u'Долгота на карте')
     latitude = models.FloatField(verbose_name=u'Широта на карте')
     name_on_map = models.CharField(max_length=200, verbose_name=u'Название на карте')
@@ -229,7 +237,7 @@ class EcoPhoto(models.Model):
     text = models.CharField(max_length=100, verbose_name=u'Текст эко', blank=True)
 
     def __unicode__(self):
-        return self.text
+        return str(self.id) + ' ' + self.text
 
 
 class EcoParticipant(models.Model):
