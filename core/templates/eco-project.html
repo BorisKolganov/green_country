@@ -12,7 +12,7 @@
                     <h2 class="section-heading" style="text-align: center">{{ eco.first_header }}</h2>
                     <p class="lead">{{ eco.first_text|safe }}</p>
                 </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6" style="margin-top: 80px;">
                     {% if eco.first_use_video %}
                         <div class="embed-responsive embed-responsive-4by3">
                             <iframe class="embed-responsive-item" src="{{ eco.first_video }}"></iframe>
@@ -38,12 +38,11 @@
                     <h2 class="section-heading" style="text-align: center">{{ eco.second_header }}</h2>
                     <p class="lead">{{ eco.second_text|safe }}</p>
                 </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6" style="margin-top: 70px;">
                     <img class="img-responsive img-rounded" src="{{ eco.second_image.url }}" alt="">
                 </div>
             </div>
             {% if eco.second_file %}
-                <br/>
                 <div class="row" style="text-align: center">
                     <a class="btn btn-success" href="{{ eco.second_file.url }}" style="height: 50px; padding-top: 13px; width: 300px">Скачать афишу для участия</a>
                 </div>
@@ -61,7 +60,7 @@
                     <h2 class="section-heading" style="text-align: center">{{ eco.third_header }}</h2>
                     <p class="lead">{{ eco.third_text|safe }}</p>
                 </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6" style="margin-top: 80px;">
                     <img class="img-responsive img-rounded" src="{{ eco.third_image.url }}" alt="">
                 </div>
             </div>
@@ -160,7 +159,7 @@
                         <button type="submit" class="btn btn-default">Отправить заявку</button>
                         </div>
                     </form>
-                     <div class="form-message-footer-form" style="display: none">
+                     <div class="form-message-footer-form" style="display: none ; text-align: center">
                         <div class="clearfix"></div>
                         <h4 class="section-heading">Спасибо!<br>Мы скоро вам перезвоним</h4>
                     </div>

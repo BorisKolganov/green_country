@@ -29,7 +29,7 @@ class CallBackView(FormView):
 
     def form_valid(self, form):
         form.save()
-        return JsonResponse({'status': 'ok', 'message': u'Мы скоро Вам перезвоним'})
+        return JsonResponse({'status': 'ok', 'message': u'Мы приняли вашу заявку. Ожидайте, мы скоро с Вами свяжемся!'})
 
     def form_invalid(self, form):
         errors = {k: v[0] for k, v in form.errors.items()}
@@ -85,7 +85,7 @@ class EcoFormView(FormView):
 
     def form_valid(self, form):
         form.save()
-        return JsonResponse({'status': 'ok', 'message': u'Мы приняли вашу заявку'})
+        return JsonResponse({'status': 'ok', 'message': u'Мы приняли вашу заявку. Ожидайте, мы скоро с Вами свяжемся!'})
 
     def form_invalid(self, form):
         errors = {k: v[0] for k, v in form.errors.items()}
