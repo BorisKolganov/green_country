@@ -89,34 +89,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="pull-right">
-                        <h5 style="text-align: center">
-                            ПРИСОЕДИНЯЙТЕСЬ!
-                        </h5>
-                        <ul class="list-inline">
-                            <li>
-                                <a class="btn btn-primary" href="{{ page.fb }}">
-                                    <span class="fa fa-facebook"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn btn-warning" href="{{ page.instagram }}">
-                                    <span class="fa fa-instagram"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn btn-primary" href="{{ page.vk }}">
-                                    <span class="fa fa-vk"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn btn-info" href="{{ page.twitter }}">
-                                    <span class="fa fa-twitter"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-lg-12" style="text-align: center">
                     <ul class="list-inline">
                         <li>
                             <a href="{% url 'core:index' %}">Зеленая страна</a>
@@ -126,7 +99,6 @@
                             <a href="{% url 'core:index' %}#raw">{{ page.service_header_link }}</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
-
                         <li>
                             <a href="{% url 'core:index' %}#advantage">{{ page.advantage_header_link }}</a>
                         </li>
@@ -143,8 +115,33 @@
                             <a href="{% url 'core:index' %}#contacts">{{ page.contacts_header_link }}</a>
                         </li>
                     </ul>
-
-                    <p class="copyright text-muted small">{{ page.footer_text }}</p>
+{#                    <p class="copyright text-muted small">{{ page.footer_text }}</p>#}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" style="text-align: center">
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn btn-primary" href="{{ page.fb }}">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-warning" href="{{ page.instagram }}">
+                                <span class="fa fa-instagram"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary" href="{{ page.vk }}">
+                                <span class="fa fa-vk"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-info" href="{{ page.twitter }}">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
