@@ -135,6 +135,7 @@ class EcoProject(models.Model):
     second_image = models.ImageField(upload_to='ecoproject', verbose_name=u'Вторая картинка', blank=True)
     second_header = models.CharField(max_length=100, verbose_name=u'Второй заголовок', blank=True)
     second_text = RichTextUploadingField(max_length=1000, verbose_name=u'Второй текст', blank=True)
+    second_file = models.FileField(verbose_name=u'Файл афиши', blank=True)
 
     third_image = models.ImageField(upload_to='ecoproject', verbose_name=u'Терья картинка', blank=True)
     third_header = models.CharField(max_length=100, verbose_name=u'Третий заголовок', blank=True)

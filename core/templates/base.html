@@ -24,12 +24,15 @@
     <link href="{% static 'core/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'core/css/slick.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'core/css/slick-theme.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/jquery.fancybox.css' %}" type="text/css" media="screen" />
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=eu_RU" type="text/javascript"></script>
+
     <script src="{% static 'core/js/jquery.js' %}"></script>
     <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'core/js/jquerycookie.js' %}"></script>
     <script src="{% static 'core/js/popup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/jquery.fancybox.js' %}"></script>
 
 {#    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">#}
 
@@ -88,6 +91,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="pull-right">
+                        <h5 style="text-align: center">
+                            ПРИСОЕДИНЯЙТЕСЬ!
+                        </h5>
                         <ul class="list-inline">
                             <li>
                                 <a class="btn btn-primary" href="{{ page.fb }}">

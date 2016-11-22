@@ -76,29 +76,21 @@ $(document).ready(function () {
 	});
     
     $('.photos').slick({
-        slidesToShow: 4,
+        slidesToShow: 1,
+        centerMode: true,
         infinite: true,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    // centerPadding: '4 0px',
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    // centerPadding: '40px',
-                    slidesToShow: 1
-                }
-            }
-        ],
+        variableWidth: true,
         autoplay: true,
         autoplaySpeed: 2000
     });
+    $(".fancybox").fancybox({
+        helpers		: {
+			title	: { type : 'inside' },
+			buttons	: {},
+            overlay: {
+                locked: false
+            }
+		}
+    });
+
 });

@@ -42,7 +42,12 @@
                     <img class="img-responsive img-rounded" src="{{ eco.second_image.url }}" alt="">
                 </div>
             </div>
-
+            {% if eco.second_file %}
+                <br/>
+                <div class="row" style="text-align: center">
+                    <a class="btn btn-success" href="{{ eco.second_file.url }}" style="height: 50px; padding-top: 13px; width: 300px">Скачать афишу для участия</a>
+                </div>
+            {% endif %}
         </div>
     </div>
 
@@ -69,12 +74,13 @@
 
     <div class="content-section-a">
         <div class="container">
-            <div class="row" style="text-align: center; height: 300px; overflow: hidden">
+            <div class="row" style="text-align: center;">
                 <div class="photos">
                     {% for p in photos %}
-                        <div class="col-lg-2 col-md-3">
-                            <img class="img-rounded img-responsive" src="{{ p.image.url }}" alt="{{ p.text }}" >
-                            <h5>{{ p.text }}</h5>
+                        <div>
+                            <a class="fancybox" href="{{ p.image.url }}" rel="fancybox"  title="{{ p.text }}">
+                                <img class="img-rounded img-responsive" src="{{ p.image.url }}"  style="height: 300px; margin-left: 10px; margin-right: 10px;">
+                            </a>
                         </div>
                     {% endfor %}
                 </div>
