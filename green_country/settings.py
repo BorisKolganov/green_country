@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'green_country',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': 3306,
         'OPTIONS': {'charset': 'utf8', },
@@ -143,7 +143,7 @@ CKEDITOR_CONFIGS = {
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 EMAIL_HOST = '127.0.0.1'
-EMAIL_PORT = 1025
-SENDER_EMAIL = 'callback@greencountry.ru'
-OPERATORS_EMAIL = ['test@test.py']
+EMAIL_PORT = 25
+SENDER_EMAIL = 'callback@zelenaya-strana.ru'
+OPERATORS_EMAIL = ['damir.belyaletdinov@gmail.com']
 
