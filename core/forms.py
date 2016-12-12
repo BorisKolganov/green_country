@@ -16,4 +16,6 @@ class CallBackForm(forms.ModelForm):
 class ParticipantForm(forms.ModelForm):
     class Meta:
         model = EcoParticipant
-        fields = ('name', 'phone', 'email', 'org')
+        fields = ('name', 'phone', 'email', 'org', 'text')
+
+    text = forms.CharField(required=False)

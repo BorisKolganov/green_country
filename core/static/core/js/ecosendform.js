@@ -2,7 +2,7 @@
  * Created by Boris on 29.10.16.
  */
 $(document).ready(function () {
-    var fields = ['.phone', '.name', '.email', '.org'];
+    var fields = ['.phone', '.name', '.email', '.org', '.text'];
 
     $('.eco-form').submit(function (event) {
         event.preventDefault();
@@ -11,7 +11,6 @@ $(document).ready(function () {
             $(val).removeClass('has-error');
             $(val + '-error').hide();
         });
-
         $.post($this.attr('action'), $this.serialize()).done(function (data) {
             if(data.status == 'not ok') {
                 $.each(data.errors, function (key, val) {
@@ -56,7 +55,7 @@ $(document).ready(function () {
         }).fail(function (data) {
             console.log(data);
         })
-    })
+    });
     $('.popup-with-form').magnificPopup({
 		type: 'inline',
 		preloader: false,

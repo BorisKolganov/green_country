@@ -250,6 +250,7 @@ class EcoParticipant(models.Model):
     phone = models.CharField(max_length=50, verbose_name=u'Телефон')
     org = models.CharField(max_length=250, verbose_name=u'Название организации')
     email = models.EmailField(max_length=200, verbose_name=u'e-mail')
+    text = RichTextField(verbose_name=u'Свободный текст')
 
     is_participant = models.BooleanField(default=False, verbose_name=u'Участник?')
 
